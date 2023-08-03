@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Main from "./components/Main/Main";
+import Incoming from "./pages/Incoming/Incoming";
+import Home from "./pages/Home";
+import Sent from "./pages/Sent/Sent";
+import Drafts from "./pages/Drafts/Drafts";
+import Deleted from "./pages/Deleted/Deleted";
+import Spam from "./pages/Spam/Spam";
+import OneLetter from "./pages/OneLetter/OneLetter";
+import CustomFolder from "./pages/CustomFolder/CustomFolder";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Main />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/incoming" element={<Incoming />} />
+        <Route path="/sent" element={<Sent />} />
+        <Route path="/drafts" element={<Drafts />} />
+        <Route path="/deleted" element={<Deleted />} />
+        <Route path="/spam" element={<Spam />} />
+        <Route path="/oneLetter/:id" element={<OneLetter />} />
+        <Route path="/customFolder/:id" element={<CustomFolder />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
